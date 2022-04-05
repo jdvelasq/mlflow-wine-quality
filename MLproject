@@ -1,0 +1,12 @@
+name: proyecto-de-demostracion
+
+docker_env:
+    image:  jdvelasq/mlflow:example
+
+entry_points:
+    main:
+        parameters:
+            alpha: {type: float, default: 0.1}
+            l1_ratio: {type: float, default: 0.1}
+            verbose: {type: integer, default: 1}
+        command: 'python3 train_elasticnet.py {alpha} {l1_ratio} {verbose}'
