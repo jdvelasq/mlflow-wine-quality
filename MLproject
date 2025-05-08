@@ -1,12 +1,17 @@
-name: proyecto-de-demostracion
+name: Proyecto de demostracion
 
 docker_env:
     image:  jdvelasq/mlflow:example
+    build_context: .
 
 entry_points:
-    main:
+    elasticnet:
         parameters:
             alpha: {type: float, default: 0.1}
             l1_ratio: {type: float, default: 0.1}
-            verbose: {type: integer, default: 1}
-        command: 'python3 train_elasticnet.py {alpha} {l1_ratio} {verbose}'
+        command: 'python3 -m homework --model elasticnet --alpha {alpha} --l1_ratio {l1_ratio}'
+
+    knn:
+        parameters:
+            n_neighbors: {type: int, default: 5}
+        command: 'python3 -m homework --model knn --n_neighbors {n_neighbors}'
